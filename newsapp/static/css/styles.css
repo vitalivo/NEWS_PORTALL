@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #cccccc  ;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Центрируем содержимое страницы */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Центрируем заголовок */
+h1, h2, li, h3, ul, p, td, tr, th {
+  text-align: center;
+}
+
+/* Центрируем изображения */
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.news-list {
+  background-color: #f2f2f2; /* цвет заднего фона */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pagination a, .pagination span {
+  margin: 0 5px;
+}
+
+.search-form {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

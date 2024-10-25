@@ -41,10 +41,9 @@ class NewsDetail(DetailView):
     pk_url_kwarg = 'pk'
 
 
-class NewsBase(CreateView, UpdateView, DeleteView):
+class NewsBaseCreate(CreateView):
     form_class = PostForm
     model = Post
-    template_name = 'newsapp/news_edit.html'
     success_url = reverse_lazy('news_list')
 
     def form_valid(self, form):
@@ -55,25 +54,43 @@ class NewsBase(CreateView, UpdateView, DeleteView):
         return HttpResponseRedirect(self.success_url)
 
 
-class NewsCreate(NewsBase):
+class NewsBaseUpdate(UpdateView):
+    form_class = PostForm
+    model = Post
+    success_url = reverse_lazy('news_list')
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        category_type = self.request.POST.get('category_type')
+        post.category_type = category_type if category_type in ['AR', 'NW'] else 'NW'
+        post.save()
+        return HttpResponseRedirect(self.success_url)
+
+
+class NewsBaseDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('news_list')
+
+
+class NewsCreate(NewsBaseCreate):
     template_name = 'newsapp/news_create.html'
 
 
-class NewsUpdate(NewsBase):
+class NewsUpdate(NewsBaseUpdate):
     template_name = 'newsapp/news_edit.html'
 
 
-class NewsDelete(NewsBase):
+class NewsDelete(NewsBaseDelete):
     template_name = 'newsapp/news_delete.html'
 
 
-class ArticlesCreate(NewsCreate):
+class ArticlesCreate(NewsBaseCreate):
     template_name = 'newsapp/articles_create.html'
 
 
-class ArticlesUpdate(NewsUpdate):
+class ArticlesUpdate(NewsBaseUpdate):
     template_name = 'newsapp/articles_edit.html'
 
 
-class ArticlesDelete(NewsDelete):
+class ArticlesDelete(NewsBaseDelete):
     template_name = 'newsapp/articles_delete.html'

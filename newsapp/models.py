@@ -52,7 +52,7 @@ class Post(models.Model):
         return reverse('news_detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'Статья {self.title()} : {self.text[:10]}'
+        return self.title[:10]
 
 
 class PostCategory(models.Model):

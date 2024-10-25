@@ -28,7 +28,7 @@
 
       {% for news in page_obj %}
         <tr>
-          <td>{{ news.title|censor }}</td>
+          <td>{{ news.title|censor|slice:":20" }}</td>
           <td>{{ news.created_at|date:"d.m.Y" }}</td>
           <td>{{ news.text|censor|slice:":20" }}</td>
           <td>{{ news.get_category_type_display }}</td>

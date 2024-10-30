@@ -7,16 +7,13 @@
 {% block content %}
 
   <h1>Новости</h1>
-
-<div style="text-align: center">
-   <form action="" method="get">
-       {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
-   </form>
-</div>
-
+  <div style="text-align: center">
+    <form action="" method="get">
+      {{ filterset.form.as_p }}
+      <input type="submit" value="Найти" />
+    </form>
+  </div>
   <hr>
-
   {% if page_obj %}
     <table>
       <tr>
@@ -24,46 +21,57 @@
         <th>Дата публикации</th>
         <th>Текст</th>
         <th>категория</th>
+        <th></th>
       </tr>
-
       {% for news in page_obj %}
         <tr>
           <td>{{ news.title|censor|slice:":20" }}</td>
           <td>{{ news.created_at|date:"d.m.Y" }}</td>
           <td>{{ news.text|censor|slice:":20" }}</td>
-          <td>{{ news.get_category_type_display }}</td>
-          <td><a href="{% url 'news_detail' news.pk %}">Подробнее</a></td>
+          <td>{{ news.get_category_display }}</td>
+          <td>
+            <a href="{% url 'news_detail' news.pk %}">Подробнее</a>
+            {% if perms.newsapp.change_news %}
+              <a href="{% url 'news_edit' news.pk %}" class="btn btn-secondary">Редактировать</a>
+            {% endif %}
+            {% if perms.newsapp.delete_news %}
+              <a href="{% url 'news_delete' news.pk %}" class="btn btn-danger">Удалить</a>
+            {% endif %}
+            {% if perms.newsapp.add_news %}
+              <a href="{% url 'news_create' %}" class="btn btn-primary">Добавить</a>
+            {% endif %}
+          </td>
         </tr>
       {% endfor %}
     </table>
+    <div class="pagination" style="text-align: center;">
+      <ul class="pagination-list">
+        {% if page_obj.has_previous %}
+          <li><a href="?{% url_replace page=1 %}">1</a></li>
+          {% if page_obj.previous_page_number != 1 %}
+            <li>...</li>
+            <li><a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a></li>
+          {% endif %}
+        {% endif %}
 
-<div class="pagination" style="text-align: center;">
-  {% if page_obj.has_previous %}
-    <a href="?{% url_replace page=1 %}">1</a>
-    {% if page_obj.previous_page_number != 1 %}
-      ...
-      <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
-    {% endif %}
-  {% endif %}
+        <li class="active">{{ page_obj.number }}</li>
+        {% if page_obj.has_next %}
+          <li><a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a></li>
+          {% if paginator.num_pages != page_obj.next_page_number %}
+            <li>...</li>
+            <li><a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a></li>
+          {% endif %}
+        {% endif %}
 
-  {{ page_obj.number }}
+        {% if page_obj.has_previous %}
+          <li><a href="?{% url_replace page=1 %}">Первая страница</a></li>
+        {% endif %}
 
-  {% if page_obj.has_next %}
-    <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
-    {% if paginator.num_pages != page_obj.next_page_number %}
-      ...
-      <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
-    {% endif %}
-  {% endif %}
-
-  {% if page_obj.has_previous %}
-    <a href="?{% url_replace page=1 %}">Первая страница</a>
-  {% endif %}
-
-  {% if page_obj.has_next %}
-    <a href="?{% url_replace page=page_obj.paginator.num_pages %}">Последняя страница</a>
-  {% endif %}
-</div>
+        {% if page_obj.has_next %}
+          <li><a href="?{% url_replace page=page_obj.paginator.num_pages %}">Последняя страница</a></li>
+        {% endif %}
+      </ul>
+    </div>
   {% else %}
     <h2>Новостей нет!</h2>
   {% endif %}

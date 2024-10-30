@@ -6,6 +6,8 @@ from .models import Post, Category
 from django.core.paginator import Paginator
 from django_filters import rest_framework as filters
 from .filters import PostFilter
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 from django.shortcuts import render
@@ -72,25 +74,33 @@ class NewsBaseDelete(DeleteView):
     success_url = reverse_lazy('news_list')
 
 
-class NewsCreate(NewsBaseCreate):
+class NewsCreate(LoginRequiredMixin, NewsBaseCreate):
+    permission_required = ('newsapp.add_post',)
+    raise_exception = True
     template_name = 'newsapp/news_create.html'
 
 
-class NewsUpdate(NewsBaseUpdate):
+class NewsUpdate(LoginRequiredMixin, NewsBaseUpdate):
+    permission_required = ('newsapp.change_post',)
     template_name = 'newsapp/news_edit.html'
 
 
-class NewsDelete(NewsBaseDelete):
+class NewsDelete(LoginRequiredMixin, NewsBaseDelete):
+    permission_required = ('newsapp.delete_post',)
     template_name = 'newsapp/news_delete.html'
 
 
-class ArticlesCreate(NewsBaseCreate):
+class ArticlesCreate(LoginRequiredMixin, NewsBaseCreate):
+    permission_required = ('newsapp.add_post',)
+    raise_exception = True
     template_name = 'newsapp/articles_create.html'
 
 
-class ArticlesUpdate(NewsBaseUpdate):
+class ArticlesUpdate(LoginRequiredMixin, NewsBaseUpdate):
+    permission_required = ('newsapp.change_post',)
     template_name = 'newsapp/articles_edit.html'
 
 
-class ArticlesDelete(NewsBaseDelete):
+class ArticlesDelete(LoginRequiredMixin, NewsBaseDelete):
+    permission_required = ('newsapp.delete_post',)
     template_name = 'newsapp/articles_delete.html'

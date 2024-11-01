@@ -1,4 +1,4 @@
-
+from .views import subscriptions
 from django.urls import path
 from . import views
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('articles/create/', views.ArticlesCreate.as_view(), name='article_create'),
     path('articles/<int:pk>/edit/', views.ArticlesUpdate.as_view(), name='article_edit'),
     path('articles/<int:pk>/delete/', views.ArticlesDelete.as_view(), name='article_delete'),
+    path('subscriptions/', subscriptions, name='subscriptions'),
 ]

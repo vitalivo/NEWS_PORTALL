@@ -3,12 +3,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.urls import reverse
+from django.db.models.signals import m2m_changed, post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
 
 
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
-
 
     def update_rating(self):
         post_rating = sum([post.rating * 3 for post in self.post_set.all()])
@@ -20,6 +22,9 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -36,6 +41,11 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
     rating = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Вызвать сигнал post_save
+        post_save.send(sender=self.__class__, instance=self, created=True)
 
     def like(self):
         self.rating += 1
@@ -74,3 +84,33 @@ class Comment(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
+
+
+class Subscriber(models.Model):
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+    category = models.ForeignKey(
+        to='Category',
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+
+    def __str__(self):
+        return f"{self.user.username} - {self.category.name}"
+
+
+@receiver(m2m_changed, sender=Post.categories.through)
+def send_notification(sender, instance, action, **kwargs):
+    if action == "post_add":
+        subscribers = Subscriber.objects.filter(category=instance.category)
+        for subscriber in subscribers:
+            send_mail(
+                f"New post in {instance.category.name}",
+                f"Check out the new post: {instance.title} - {instance.get_absolute_url()}",
+                "vitalivoloshin1975@yandex.co.il",
+                [subscriber.user.email],
+                fail_silently=False,
+            )

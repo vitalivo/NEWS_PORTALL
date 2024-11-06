@@ -21,14 +21,13 @@
         <th>Дата публикации</th>
         <th>Текст</th>
         <th>категория</th>
-        <th></th>
       </tr>
       {% for news in page_obj %}
         <tr>
           <td>{{ news.title|censor|slice:":20" }}</td>
           <td>{{ news.created_at|date:"d.m.Y" }}</td>
           <td>{{ news.text|censor|slice:":20" }}</td>
-          <td>{{ news.get_category_display }}</td>
+          <td>{{ news.get_category_type_display }}</td>
           <td>
             <a href="{% url 'news_detail' news.pk %}">Подробнее</a>
             {% if perms.newsapp.change_news %}

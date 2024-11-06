@@ -42,7 +42,7 @@ class NewsList(ListView):
     ordering = '-created_at'
     template_name = 'newsapp/news_list.html'
     context_object_name = 'news'
-    paginate_by = 2
+    paginate_by = 4
 
     def get_queryset(self):
         queryset = super().get_queryset()

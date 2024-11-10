@@ -12,12 +12,7 @@ from django_apscheduler.models import DjangoJobExecution
 from NEWS_PORTAL.newsapp.models import Category, Post
 
 logger = logging.getLogger(__name__)
-#заменим код my_job на отправку сообщений менеджерам.
-#подключите приложение django_apscheduler;
-#добавьте команду запуска периодических задач;
-#настройте периодическую задачу отправки списка статей каждую пятницу в 18:00;
-#составьте сообщение со ссылками на статьи;
-#сообщение должно содержать только статьи, которые появились с момента предыдущей рассылки.
+
 
 def my_job():
     today = datetime.now()
@@ -27,6 +22,7 @@ def my_job():
     html_content = ''
     for post in posts:
         html_content += f'<a href="{post.get_absolute_url()}">{post.title}</a><br>'
+
 
 @util.close_old_connections
 def delete_old_job_executions(max_age=604_800):

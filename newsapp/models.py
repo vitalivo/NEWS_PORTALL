@@ -32,8 +32,8 @@ class Post(models.Model):
     ARTICLE = 'AR'
     NEWS = 'NW'
     CATEGORY_CHOICES = (
-        (ARTICLE, 'Article'),
-        (NEWS, 'News'),
+        (ARTICLE, 'Новость'),
+        (NEWS, 'Статья'),
     )
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
     category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)

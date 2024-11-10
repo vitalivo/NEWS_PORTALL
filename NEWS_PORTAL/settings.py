@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',
     'django_apscheduler',
+    'django_redis',
 ]
 
 SITE_ID = 1
@@ -183,3 +184,21 @@ ADMINS = (
 
 NOTIFICATION_EMAIL = 'vitalivoloshin1975@yandex.co.il'
 NOTIFICATION_SUBJECT = 'Новый пост в категории!'
+
+CELERY_BROKER_URL = 'redis://default:D5GtwCYqqcXCzFDrLFMNcFGQmmjWZ1jq@redis-11836.c322.us-east-1-2.ec2.redns.redis-cloud.com:11836'
+CELERY_RESULT_BACKEND = 'redis://default:D5GtwCYqqcXCzFDrLFMNcFGQmmjWZ1jq@redis-11836.c322.us-east-1-2.ec2.redns.redis-cloud.com:11836'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://default:D5GtwCYqqcXCzFDrLFMNcFGQmmjWZ1jq@redis-11836.c322.us-east-1-2.ec2.redns.redis-cloud.com:11836/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        },
+        'KEY_PREFIX': 'example'
+    }
+}

@@ -19,19 +19,6 @@ from django.shortcuts import render
 from .filters import PostFilter
 
 
-@receiver(post_save, sender=Post)
-def send_notification(sender, instance, created, **kwargs):
-    if created and not instance.categories.exists():
-        subscribers = Subscriber.objects.all()
-        for subscriber in subscribers:
-            send_mail(
-                f"New post: {instance.title}",
-                f"Check out the new post: {instance.get_absolute_url()}",
-                "vitalivoloshin1975@yandex.co.il",
-                [subscriber.user.email],
-                fail_silently=False,
-            )
-
 def search(request):
     filterset = PostFilter(request.GET, queryset=Post.objects.all())
     return render(request, 'newsapp/news_search.html', {'filterset': filterset})

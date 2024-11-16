@@ -53,6 +53,10 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -194,11 +198,8 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://default:D5GtwCYqqcXCzFDrLFMNcFGQmmjWZ1jq@redis-11836.c322.us-east-1-2.ec2.redns.redis-cloud.com:11836/1',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
-        },
-        'KEY_PREFIX': 'example'
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache_files'),
+        'TIMEOUT': 60,  # указываем время кэширования в секундах (1 минута)
     }
 }

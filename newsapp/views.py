@@ -17,6 +17,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.shortcuts import render
 from .filters import PostFilter
+from django.core.cache import cache
 
 
 def search(request):
@@ -47,6 +48,13 @@ class NewsDetail(DetailView):
     template_name = 'newsapp/news_detail.html'
     context_object_name = 'news'
     pk_url_kwarg = 'pk'
+
+    def get_object(self, queryset=None):
+        obj = cache.get(f'news-{self.kwargs["pk"]}', None)
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'news-{self.kwargs["pk"]}', obj)
+        return obj
 
 
 class NewsBaseCreate(CreateView):

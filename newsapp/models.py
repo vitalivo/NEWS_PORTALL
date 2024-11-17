@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
+from django.core.cache import cache
 
 
 class Author(models.Model):
@@ -47,6 +48,8 @@ class Post(models.Model):
         super().save(*args, **kwargs)
         # Вызвать сигнал post_save
         post_save.send(sender=self.__class__, instance=self, created=True)
+        if cache.get(f'news-{self.pk}'):
+            cache.delete(f'news-{self.pk}')
 
     def like(self):
         self.rating += 1
@@ -60,7 +63,10 @@ class Post(models.Model):
         return self.text[:124] + '...'
 
     def get_absolute_url(self):
-        return reverse('news_detail', args=[str(self.id)])
+        return f'/news/{self.pk}'
+
+    # def get_absolute_url(self):
+    #     return reverse('news_detail', args=[str(self.id)])
 
     def __str__(self):
         return self.title[:10]

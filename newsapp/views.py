@@ -17,6 +17,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.shortcuts import render
 from .filters import PostFilter
+from django.utils.translation import gettext as _
 
 
 def search(request):
@@ -57,7 +58,7 @@ class NewsBaseCreate(CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         category_type = self.request.POST.get('category_type')
-        post.category_type = category_type if category_type in ['AR', 'NW'] else 'NW'
+        post.category_type = category_type if category_type in [_('AR'), _('NW')] else _('NW')
         post.save()
         return HttpResponseRedirect(self.success_url)
 
@@ -70,7 +71,7 @@ class NewsBaseUpdate(UpdateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         category_type = self.request.POST.get('category_type')
-        post.category_type = category_type if category_type in ['AR', 'NW'] else 'NW'
+        post.category_type = category_type if category_type in [_('AR'), _('NW')] else _('NW')
         post.save()
         return HttpResponseRedirect(self.success_url)
 

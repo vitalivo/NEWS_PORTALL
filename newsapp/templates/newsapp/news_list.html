@@ -1,43 +1,42 @@
-{% extends "default.html" %}
-
+{% extends "default.html" %} 
 {% load custom_tags %}
-
 {% load custom_filters %}
+{% load i18n %}
 
 {% block content %}
-
-  <h1>Новости</h1>
-  <div style="text-align: center">
+    <th>{% trans "Список новостей" %}</th>
+    <div style="text-align: center">
     <form action="" method="get">
       {{ filterset.form.as_p }}
-      <input type="submit" value="Найти" />
+      <input type="submit" value="{% trans "Найти" %}" />
     </form>
   </div>
   <hr>
   {% if page_obj %}
     <table>
       <tr>
-        <th>Заголовок</th>
-        <th>Дата публикации</th>
-        <th>Текст</th>
-        <th>категория</th>
+        <th>{% trans "Заголовок" %}</th>
+        <th>{% trans "Дата публикации" %}</th>
+        <th>{% trans "Текст" %}</th>
+        <th>{% trans "Категория" %}</th>
+        <th>{% trans "Действия" %}</th>
       </tr>
       {% for news in page_obj %}
         <tr>
           <td>{{ news.title|censor|slice:":20" }}</td>
-          <td>{{ news.created_at|date:"d.m.Y" }}</td>
-          <td>{{ news.text|censor|slice:":20" }}</td>
-          <td>{{ news.get_category_type_display }}</td>
+          <td>{{ news.published_date }}</td>
+          <td>{{ news.text|slice:":50" }}</td>
+          <td>{{ news.category }}</td>
           <td>
-            <a href="{% url 'news_detail' news.pk %}">Подробнее</a>
+            <a href="{% url 'news_detail' news.pk %}">{% trans "Подробнее" %}</a>
             {% if perms.newsapp.change_news %}
-              <a href="{% url 'news_edit' news.pk %}" class="btn btn-secondary">Редактировать</a>
+              <a href="{% url 'news_edit' news.pk %}" class="btn btn-secondary">{% trans "Редактировать" %}</a>
             {% endif %}
             {% if perms.newsapp.delete_news %}
-              <a href="{% url 'news_delete' news.pk %}" class="btn btn-danger">Удалить</a>
+              <a href="{% url 'news_delete' news.pk %}" class="btn btn-danger">{% trans "Удалить" %}</a>
             {% endif %}
             {% if perms.newsapp.add_news %}
-              <a href="{% url 'news_create' %}" class="btn btn-primary">Добавить</a>
+              <a href="{% url 'news_create' %}" class="btn btn-primary">{% trans "Добавить" %}</a>
             {% endif %}
           </td>
         </tr>
@@ -46,7 +45,7 @@
     <div class="pagination" style="text-align: center;">
       <ul class="pagination-list">
         {% if page_obj.has_previous %}
-          <li><a href="?{% url_replace page=1 %}">1</a></li>
+          <li><a href="?{% url_replace page=1 %}">{% trans "Первая страница" %}</a></li>
           {% if page_obj.previous_page_number != 1 %}
             <li>...</li>
             <li><a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a></li>
@@ -54,25 +53,18 @@
         {% endif %}
 
         <li class="active">{{ page_obj.number }}</li>
+
         {% if page_obj.has_next %}
           <li><a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a></li>
           {% if paginator.num_pages != page_obj.next_page_number %}
             <li>...</li>
             <li><a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a></li>
           {% endif %}
-        {% endif %}
-
-        {% if page_obj.has_previous %}
-          <li><a href="?{% url_replace page=1 %}">Первая страница</a></li>
-        {% endif %}
-
-        {% if page_obj.has_next %}
-          <li><a href="?{% url_replace page=page_obj.paginator.num_pages %}">Последняя страница</a></li>
+          <li><a href="?{% url_replace page=page_obj.paginator.num_pages %}">{% trans "Последняя страница" %}</a></li>
         {% endif %}
       </ul>
     </div>
   {% else %}
-    <h2>Новостей нет!</h2>
+    <p>{% trans "Нет новостей для отображения" %}</p>
   {% endif %}
-
 {% endblock %}

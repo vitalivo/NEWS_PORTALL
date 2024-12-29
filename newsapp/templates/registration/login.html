@@ -1,13 +1,14 @@
 {% extends "default.html" %}
+{% load i18n %}
 
 {% block content %}
 <div style="text-align: center">
-<h1>Авторизация</h1>
+<h1>{% trans "Авторизация" %}</h1>
 <hr>
     <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="login">
+    <input type="submit" value="{% trans "Войти" %}">
     <input type="hidden" name="next" value="{{ next }}">
     </form>
 </div>

@@ -1,11 +1,12 @@
 {% extends "default.html" %}
+{% load i18n %}
 
 {% block content %}
-    <h1>Результаты поиска</h1>
+    <h1>{% trans "Результаты поиска" %}</h1>
     <div style="text-align: center">
     <form action="" method="get">
         {{ filterset.form.as_p }}
-        <input type="submit" value="Search" />
+        <input type="submit" value="{% trans "Найти" %}" />
     </form>
     </div>
     <ul>

@@ -5,12 +5,59 @@ body {
   background-color: #f2f2f2;
 }
 
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+form select {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+form input[type="submit"] {
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #555;
+}
+
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .container h1 {
@@ -23,28 +70,14 @@ body {
   margin-bottom: 20px;
 }
 
-/* Центрируем содержимое страницы */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-/* Центрируем заголовок */
-h1, h2, li, h3, ul, p, td, tr, th {
-  text-align: center;
-}
-
-/* Центрируем изображения */
-img {
-  display: block;
-  margin: 0 auto;
-}
-
 footer {
-  margin-top: 20px;
   text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 table {
@@ -64,13 +97,4 @@ table {
 
 .pagination a, .pagination span {
   margin: 0 5px;
-}
-
-.search-form {
-  text-align: center;
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

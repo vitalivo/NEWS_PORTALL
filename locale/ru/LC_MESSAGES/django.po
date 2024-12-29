@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-29 16:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: .\NEWS_PORTAL\settings.py:136
+msgid "English"
+msgstr "Английский"
+
+#: .\NEWS_PORTAL\settings.py:137
+msgid "Russian"
+msgstr "Русский"
+
+#: .\newsapp\templates\account\email\email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"Вы получили это сообщение, потому что пользователь %(user_display)s указал "
+"этот email при регистрации на сайте %(site_domain)s.\n"
+"\n"
+"Для подтверждения регистрации пройдите по ссылке %(activate_url)s\n"
+"\n"
+"Хорошего дня!\n"
+msgstr ""
+"Вы получили это сообщение, потому что пользователь %(user_display)s указал "
+"этот email при регистрации на сайте %(site_domain)s.\n"
+"\n"
+"Для подтверждения регистрации пройдите по ссылке %(activate_url)s\n"
+"\n"
+"Хорошего дня!\n"
+
+#: .\newsapp\templates\default.html:8
+msgid "Мой сайт"
+msgstr "Мой сайт"
+
+#: .\newsapp\templates\default.html:14
+msgid "Добро пожаловать на мой сайт"
+msgstr "Добро пожаловать на мой сайт"
+
+#: .\newsapp\templates\default.html:17
+msgid "Новости"
+msgstr "Новости"
+
+#: .\newsapp\templates\default.html:33
+msgid "Change language"
+msgstr "Сменить язык"
+
+#: .\newsapp\templates\default.html:44
+msgid "Мой сайт &copy; 2024"
+msgstr "Мой сайт &copy; 2024"
+
+#: .\newsapp\templates\newsapp\news_list.html:7
+msgid "Список новостей"
+msgstr "Список новостей"
+
+#: .\newsapp\templates\newsapp\news_list.html:11
+msgid "Найти"
+msgstr "Найти"
+
+#: .\newsapp\templates\newsapp\news_list.html:18
+msgid "Заголовок"
+msgstr "Заголовок"
+
+#: .\newsapp\templates\newsapp\news_list.html:19
+msgid "Дата публикации"
+msgstr "Дата публикации"
+
+#: .\newsapp\templates\newsapp\news_list.html:20
+msgid "Текст"
+msgstr "Текст"
+
+#: .\newsapp\templates\newsapp\news_list.html:21
+msgid "Категория"
+msgstr "Категория"
+
+#: .\newsapp\templates\newsapp\news_list.html:22
+msgid "Действия"
+msgstr "Действия"
+
+#: .\newsapp\templates\newsapp\news_list.html:31
+msgid "Подробнее"
+msgstr "Подробнее"
+
+#: .\newsapp\templates\newsapp\news_list.html:33
+msgid "Редактировать"
+msgstr "Редактировать"
+
+#: .\newsapp\templates\newsapp\news_list.html:36
+msgid "Удалить"
+msgstr "Удалить"
+
+#: .\newsapp\templates\newsapp\news_list.html:39
+msgid "Добавить"
+msgstr "Добавить"
+
+#: .\newsapp\templates\newsapp\news_list.html:48
+msgid "Первая страница"
+msgstr "Первая страница"
+
+#: .\newsapp\templates\newsapp\news_list.html:63
+msgid "Последняя страница"
+msgstr "Последняя страница"
+
+#: .\newsapp\templates\newsapp\news_list.html:68
+msgid "Нет новостей для отображения"
+msgstr "Нет новостей для отображения"
+
+#: .\newsapp\views.py:61 .\newsapp\views.py:74
+msgid "AR"
+msgstr ""
+
+#: .\newsapp\views.py:61 .\newsapp\views.py:74
+msgid "NW"
+msgstr ""

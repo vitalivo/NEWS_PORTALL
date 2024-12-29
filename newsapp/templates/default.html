@@ -1,25 +1,47 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% trans "Мой сайт" %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать на мой сайт</h1>
+        <h1>{% trans "Добро пожаловать на мой сайт" %}</h1>
         <nav>
-                <li><a href="/news/">Новости</a></li>
-
+            <ul>
+                <li><a href="/news/">{% trans "Новости" %}</a></li>
+            </ul>
         </nav>
+        <form action="{% url 'set_language' %}" method="POST">
+            {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
+            <input type="hidden" name="next" value="{{ request.path }}">
+            {% get_current_language as LANGUAGE_CODE %}
+            <select name="language" id="">
+                {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+                {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+                {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                        {{ language.name_local }} - {{ language.code }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value={% trans "Change language" %}>
+        </form>
     </header>
-    <main>
+    <main class="content">
+        {% load cache %}
+        {% cache 30 content %}
         {% block content %}
         {% endblock %}
+        {% endcache %}
     </main>
     <footer>
-        <p>Мой сайт &copy; 2024</p>
+        <p>{% trans "Мой сайт &copy; 2024" %}</p>
     </footer>
 </body>
 </html>

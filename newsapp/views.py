@@ -17,11 +17,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.shortcuts import render
 from .filters import PostFilter
-<<<<<<< HEAD
 from django.utils.translation import gettext as _
-=======
-from django.core.cache import cache
->>>>>>> 22933f5b4277efb5dff635a4f441947324f15060
 
 
 def search(request):
@@ -34,7 +30,7 @@ class NewsList(ListView):
     ordering = '-created_at'
     template_name = 'newsapp/news_list.html'
     context_object_name = 'news'
-    paginate_by = 4
+    paginate_by = 2
 
     def get_queryset(self):
         queryset = super().get_queryset()

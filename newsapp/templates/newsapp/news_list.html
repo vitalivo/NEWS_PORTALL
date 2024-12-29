@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-{% extends "default.html" %} 
-{% load custom_tags %}
-{% load custom_filters %}
-{% load i18n %}
-
-=======
 {% extends "default.html" %}
+{% load i18n %}
 {% load custom_tags %}
 {% load custom_filters %}
+
 {% load cache %}
 {% cache 60 content %}
->>>>>>> 22933f5b4277efb5dff635a4f441947324f15060
 {% block content %}
-    <th>{% trans "Список новостей" %}</th>
     <div style="text-align: center">
     <form action="" method="get">
       {{ filterset.form.as_p }}
@@ -75,10 +68,5 @@
   {% else %}
     <p>{% trans "Нет новостей для отображения" %}</p>
   {% endif %}
-<<<<<<< HEAD
-{% endblock %}
-=======
-
 {% endblock %}
 {% endcache %}
->>>>>>> 22933f5b4277efb5dff635a4f441947324f15060

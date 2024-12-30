@@ -8,24 +8,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-29 16:57+0200\n"
+"POT-Creation-Date: 2024-12-30 16:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ru\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\NEWS_PORTAL\settings.py:136
+#: .\NEWS_PORTAL\settings.py:140
 msgid "English"
 msgstr "Английский"
 
-#: .\NEWS_PORTAL\settings.py:137
+#: .\NEWS_PORTAL\settings.py:141
 msgid "Russian"
 msgstr "Русский"
+
+#: .\newsapp\templates\403.html:6
+msgid "Ошибка 403"
+msgstr ""
+
+#: .\newsapp\templates\403.html:9
+msgid "Кажется, у Вас нет доступа к данной странице..."
+msgstr ""
+
+#: .\newsapp\templates\403.html:11
+msgid "Вы можете запросить у администратора сайта доступ к данной странице"
+msgstr ""
 
 #: .\newsapp\templates\account\email\email_confirmation_message.txt:5
 #, python-format
@@ -37,12 +49,6 @@ msgid ""
 "\n"
 "Хорошего дня!\n"
 msgstr ""
-"Вы получили это сообщение, потому что пользователь %(user_display)s указал "
-"этот email при регистрации на сайте %(site_domain)s.\n"
-"\n"
-"Для подтверждения регистрации пройдите по ссылке %(activate_url)s\n"
-"\n"
-"Хорошего дня!\n"
 
 #: .\newsapp\templates\default.html:8
 msgid "Мой сайт"
@@ -53,77 +59,151 @@ msgid "Добро пожаловать на мой сайт"
 msgstr "Добро пожаловать на мой сайт"
 
 #: .\newsapp\templates\default.html:17
+#: .\newsapp\templates\newsapp\category.html:4
 msgid "Новости"
 msgstr "Новости"
 
 #: .\newsapp\templates\default.html:33
 msgid "Change language"
-msgstr "Сменить язык"
+msgstr "Изменить язык"
 
 #: .\newsapp\templates\default.html:44
 msgid "Мой сайт &copy; 2024"
 msgstr "Мой сайт &copy; 2024"
 
-#: .\newsapp\templates\newsapp\news_list.html:7
-msgid "Список новостей"
-msgstr "Список новостей"
+#: .\newsapp\templates\newsapp\articles_create.html:6
+msgid "Создание статьи"
+msgstr "Создание статьи"
 
-#: .\newsapp\templates\newsapp\news_list.html:11
-msgid "Найти"
-msgstr "Найти"
+#: .\newsapp\templates\newsapp\articles_create.html:11
+#: .\newsapp\templates\newsapp\articles_edit.html:10
+#: .\newsapp\templates\newsapp\news_create.html:11
+#: .\newsapp\templates\newsapp\news_edit.html:11
+msgid "Сохранить"
+msgstr "Сохранить"
 
-#: .\newsapp\templates\newsapp\news_list.html:18
-msgid "Заголовок"
-msgstr "Заголовок"
+#: .\newsapp\templates\newsapp\articles_delete.html:10
+msgid "Вы действительно хотите удалить статью?"
+msgstr "Вы действительно хотите удалить статью?"
 
-#: .\newsapp\templates\newsapp\news_list.html:19
-msgid "Дата публикации"
-msgstr "Дата публикации"
-
-#: .\newsapp\templates\newsapp\news_list.html:20
-msgid "Текст"
-msgstr "Текст"
-
-#: .\newsapp\templates\newsapp\news_list.html:21
-msgid "Категория"
-msgstr "Категория"
-
-#: .\newsapp\templates\newsapp\news_list.html:22
-msgid "Действия"
-msgstr "Действия"
-
-#: .\newsapp\templates\newsapp\news_list.html:31
-msgid "Подробнее"
-msgstr "Подробнее"
-
-#: .\newsapp\templates\newsapp\news_list.html:33
-msgid "Редактировать"
-msgstr "Редактировать"
-
-#: .\newsapp\templates\newsapp\news_list.html:36
+#: .\newsapp\templates\newsapp\articles_delete.html:11
+#: .\newsapp\templates\newsapp\news_list.html:37
 msgid "Удалить"
 msgstr "Удалить"
 
-#: .\newsapp\templates\newsapp\news_list.html:39
+#: .\newsapp\templates\newsapp\articles_edit.html:5
+msgid "Редактирование статьи"
+msgstr "Редактирование статьи"
+
+#: .\newsapp\templates\newsapp\category.html:10
+msgid "Подписаться на"
+msgstr "Подписаться на"
+
+#: .\newsapp\templates\newsapp\category.html:15
+#: .\newsapp\templates\subscriptions.html:17
+#: .\newsapp\templates\subscriptions.html:20
+msgid "Подписаться"
+msgstr "Подписаться"
+
+#: .\newsapp\templates\newsapp\news_create.html:6
+msgid "Создание новости"
+msgstr "Создание новости"
+
+#: .\newsapp\templates\newsapp\news_delete.html:5
+msgid "Удаление новости"
+msgstr "Удаление новости"
+
+#: .\newsapp\templates\newsapp\news_delete.html:11
+msgid "Вы действительно хотите удалить новость"
+msgstr "Вы действительно хотите удалить новость"
+
+#: .\newsapp\templates\newsapp\news_delete.html:12
+msgid "удалить"
+msgstr "удалить"
+
+#: .\newsapp\templates\newsapp\news_edit.html:6
+msgid "Редактирование новости"
+msgstr "Редактирование новости"
+
+#: .\newsapp\templates\newsapp\news_list.html:12
+#: .\newsapp\templates\newsapp\news_search.html:9
+msgid "Найти"
+msgstr "Найти"
+
+#: .\newsapp\templates\newsapp\news_list.html:19
+msgid "Заголовок"
+msgstr "Заголовок"
+
+#: .\newsapp\templates\newsapp\news_list.html:20
+msgid "Дата публикации"
+msgstr "Дата публикации"
+
+#: .\newsapp\templates\newsapp\news_list.html:21
+msgid "Текст"
+msgstr "Текст"
+
+#: .\newsapp\templates\newsapp\news_list.html:22
+msgid "Категория"
+msgstr "Категория"
+
+#: .\newsapp\templates\newsapp\news_list.html:23
+msgid "Действия"
+msgstr "Действия"
+
+#: .\newsapp\templates\newsapp\news_list.html:32
+msgid "Подробнее"
+msgstr "Подробнее"
+
+#: .\newsapp\templates\newsapp\news_list.html:34
+msgid "Редактировать"
+msgstr "Редактировать"
+
+#: .\newsapp\templates\newsapp\news_list.html:40
 msgid "Добавить"
 msgstr "Добавить"
 
-#: .\newsapp\templates\newsapp\news_list.html:48
+#: .\newsapp\templates\newsapp\news_list.html:49
+#: .\newsapp\templates\newsapp\news_list.html:66
 msgid "Первая страница"
 msgstr "Первая страница"
 
-#: .\newsapp\templates\newsapp\news_list.html:63
+#: .\newsapp\templates\newsapp\news_list.html:70
 msgid "Последняя страница"
 msgstr "Последняя страница"
 
-#: .\newsapp\templates\newsapp\news_list.html:68
-msgid "Нет новостей для отображения"
-msgstr "Нет новостей для отображения"
+#: .\newsapp\templates\newsapp\news_list.html:75
+msgid "Новостей нет!"
+msgstr "Новостей нет!"
 
-#: .\newsapp\views.py:61 .\newsapp\views.py:74
+#: .\newsapp\templates\newsapp\news_search.html:5
+msgid "Результаты поиска"
+msgstr "Результаты поиска"
+
+#: .\newsapp\templates\registration\login.html:6
+msgid "Авторизация"
+msgstr "Авторизация"
+
+#: .\newsapp\templates\registration\login.html:11
+msgid "Войти"
+msgstr "Войти"
+
+#: .\newsapp\templates\registration\signup.html:9
+msgid "Зарегистрироваться"
+msgstr "Зарегистрироваться"
+
+#: .\newsapp\templates\subscriptions.html:5
+msgid "Подписки"
+msgstr "Подписки"
+
+#: .\newsapp\templates\subscriptions.html:18
+#: .\newsapp\templates\subscriptions.html:21
+msgid "Отписаться"
+msgstr "Отписаться"
+
+#: .\newsapp\views.py:68 .\newsapp\views.py:81
 msgid "AR"
-msgstr ""
+msgstr "Статья"
 
-#: .\newsapp\views.py:61 .\newsapp\views.py:74
+#: .\newsapp\views.py:68 .\newsapp\views.py:81
 msgid "NW"
-msgstr ""
+msgstr "Новость"

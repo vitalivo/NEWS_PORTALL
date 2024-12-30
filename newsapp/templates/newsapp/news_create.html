@@ -1,13 +1,14 @@
 {% extends "default.html" %}
+{% load i18n %}
 {% load custom_filters %}
 
 {% block content %}
-    <h1>Создание новости</h1>
+    <h1>{% trans "Создание новости" %}</h1>
     <div style="text-align: center">
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="save" />
+        <input type="submit" value={% trans "Сохранить" %} />
     </form>
     </div>
 {% endblock content %}

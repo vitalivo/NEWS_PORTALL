@@ -1,14 +1,15 @@
 {% extends "default.html" %}
+{% load i18n %}
 
 {% block content %}
-    <h1>Удаление новости</h1>
+    <h1>{% trans "Удаление новости" %}</h1>
 
     <hr>
     <div style="text-align: center">
     <form action="" method="post">
         {% csrf_token %}
-        <p>Вы действительно хотите удалить новость "{{ news.title }}"?</p>
-        <input type="submit" value="Delete" />
+        <p>{% trans "Вы действительно хотите удалить новость" %} "{{ news.title }}"?</p>
+        <input type="submit" value={% trans "удалить" %}/>
     </form>
     </div>
 {% endblock content %}

@@ -1,18 +1,19 @@
 {% extends "default.html" %}
+{% load i18n %}
 
-{% block content %}
-{% block title %} NEWS {% endbolck %}
+{% block title %} {% trans "Новости" %} {% endblock %}
+
 {% block content %}
 {% if category.id %}
 <div class="subscribe">
     <em>
-        Subsscribe to
+        {% trans "Подписаться на" %}
         <strong>{{ category }}</strong>
     </em>
 
-    <a href="{#% url 'newsapp:subscribe' category.id %}" class="button button-online">
-        Subscribe
+    <a href="{% url 'newsapp:subscribe' category.id %}" class="button button-online">
+        {% trans "Подписаться" %}
     </a>
-
 </div>
+{% endif %}
 {% endblock %}

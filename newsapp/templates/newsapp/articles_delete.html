@@ -1,5 +1,5 @@
 {% extends "default.html" %}
-
+{% load i18n %}
 {% block content %}
     <h1>Удаление статьи</h1>
 
@@ -7,8 +7,8 @@
     <div style="text-align: center">
     <form action="" method="post">
         {% csrf_token %}
-        <p>Вы действительно хотите удалить статью? "{{ news.title }}"?</p>
-        <input type="submit" value="Delete" />
+        <p>{% trans "Вы действительно хотите удалить статью?" %} "{{ news.title }}"?</p>
+        <input type="submit" value={% trans "Удалить" %} />
     </form>
     </div>
 {% endblock content %}

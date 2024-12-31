@@ -7,6 +7,8 @@ from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from django.core.cache import cache
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
 
 
 class Author(models.Model):
@@ -37,11 +39,11 @@ class Post(models.Model):
         (NEWS, 'Статья'),
     )
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
-    category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE, help_text=_('Тип поста'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Дата создания'))
     categories = models.ManyToManyField(Category, through='PostCategory')
-    title = models.CharField(max_length=255)
-    text = models.TextField()
+    title = models.CharField(max_length=255, verbose_name=_('Заголовок'))
+    text = models.TextField(verbose_name=_('Текст'))
     rating = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):

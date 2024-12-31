@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.mail import send_mail, EmailMultiAlternatives
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import PostForm
@@ -42,7 +42,7 @@ class NewsList(ListView):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
         return context
-
+    
 
 class NewsDetail(DetailView):
     model = Post

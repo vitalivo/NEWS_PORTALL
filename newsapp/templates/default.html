@@ -17,9 +17,9 @@
                 <li><a href="/news/">{% trans "Новости" %}</a></li>
             </ul>
         </nav>
-        <form action="{% url 'set_language' %}" method="POST">
-            {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
-            <input type="hidden" name="next" value="{{ request.path }}">
+        <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} 
+            <!-- Не забываем по csrf_token для POST запросов -->
+            <input type="hidden" name="next" value="{{ request_to }}">
             {% get_current_language as LANGUAGE_CODE %}
             <select name="language" id="">
                 {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
@@ -35,11 +35,11 @@
 
     </header>
     <main class="content">
-        {% load cache %}
-        {% cache 30 content %}
+        {% comment %} {% load cache %}
+        {% cache 30 content %} {% endcomment %}
         {% block content %}
         {% endblock %}
-        {% endcache %}
+        {% comment %} {% endcache %} {% endcomment %}
     </main>
     <footer>
         <p>{% trans "Мой сайт &copy; 2024" %}</p>

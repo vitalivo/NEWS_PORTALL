@@ -56,10 +56,6 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -69,15 +65,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-
     "django.middleware.cache.UpdateCacheMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.cache.FetchFromCacheMiddleware",
 ]
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale')
-]
+
 
 ROOT_URLCONF = 'NEWS_PORTAL.urls'
 
@@ -137,17 +129,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
+LANGUAGE_CODE = 'ru'
+
 LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
 ]
 
-LANGUAGE_CODE = 'en-us'
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 

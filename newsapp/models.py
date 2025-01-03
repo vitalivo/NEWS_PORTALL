@@ -7,8 +7,7 @@ from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from django.core.cache import cache
-from django.utils.translation import gettext as _
-from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
+from django.utils.translation import gettext_lazy as _
 
 
 class Author(models.Model):
@@ -35,15 +34,15 @@ class Post(models.Model):
     ARTICLE = 'AR'
     NEWS = 'NW'
     CATEGORY_CHOICES = (
-        (ARTICLE, 'Новость'),
-        (NEWS, 'Статья'),
+        (ARTICLE, _('Article')),
+        (NEWS, _('News')),
     )
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
-    category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE, help_text=_('Тип поста'))
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Дата создания'))
-    categories = models.ManyToManyField(Category, through='PostCategory')
-    title = models.CharField(max_length=255, verbose_name=_('Заголовок'))
-    text = models.TextField(verbose_name=_('Текст'))
+    category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE, help_text=_('Post type'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
+    categories = models.ManyToManyField(Category, through='PostCategory', related_name='posts', through_fields=('post', 'category'))
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    text = models.TextField(verbose_name=_('Text'))
     rating = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
@@ -82,8 +81,8 @@ class PostCategory(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(verbose_name=_('Text'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
     rating = models.IntegerField(default=0)
 
     def like(self):
@@ -117,8 +116,8 @@ def send_notification(sender, instance, action, **kwargs):
         subscribers = Subscriber.objects.filter(category=instance.category)
         for subscriber in subscribers:
             send_mail(
-                f"New post in {instance.category.name}",
-                f"Check out the new post: {instance.title} - {instance.get_absolute_url()}",
+                _(f"New post in {instance.category.name}"),
+                _(f"Check out the new post: {instance.title} - {instance.get_absolute_url()}"),
                 "vitalivoloshin1975@yandex.co.il",
                 [subscriber.user.email],
                 fail_silently=False,

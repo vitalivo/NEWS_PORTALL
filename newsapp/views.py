@@ -11,12 +11,9 @@ from .filters import PostFilter
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from django.shortcuts import render
-from .filters import PostFilter
 from django.utils.translation import gettext as _
 from django.core.cache import cache
 
@@ -31,7 +28,7 @@ class NewsList(ListView):
     ordering = '-created_at'
     template_name = 'newsapp/news_list.html'
     context_object_name = 'news'
-    paginate_by = 6
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -53,7 +50,7 @@ class NewsDetail(DetailView):
     def get_object(self, queryset=None):
         obj = cache.get(f'news-{self.kwargs["pk"]}', None)
         if not obj:
-            obj = super().get_object(queryset=self.queryset)
+            obj = super().get_object(queryset=self.get_queryset())
             cache.set(f'news-{self.kwargs["pk"]}', obj)
         return obj
 
@@ -150,4 +147,3 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
-

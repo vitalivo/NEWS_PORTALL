@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 16:43+0200\n"
+"POT-Creation-Date: 2025-01-03 17:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,25 +19,120 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\NEWS_PORTAL\settings.py:140
+#: .\NEWS_PORTAL\settings.py:135
 msgid "English"
 msgstr "Английский"
 
-#: .\NEWS_PORTAL\settings.py:141
+#: .\NEWS_PORTAL\settings.py:136
 msgid "Russian"
 msgstr "Русский"
 
+#: .\newsapp\filters.py:9 .\newsapp\templates\newsapp\news_list.html:20
+msgid "Заголовок"
+msgstr "Заголовок"
+
+#: .\newsapp\filters.py:13 .\newsapp\templates\newsapp\news_list.html:23
+msgid "Категория"
+msgstr "Категория"
+
+#: .\newsapp\filters.py:14
+msgid "Все категории"
+msgstr "Все категории"
+
+#: .\newsapp\filters.py:19 .\newsapp\templates\newsapp\news_list.html:21
+msgid "Дата публикации"
+msgstr "Дата публикации"
+
+#: .\newsapp\forms.py:20
+msgid "Title must be at least 10 characters long"
+msgstr "Заголовок должен быть не менее 10 символов"
+
+#: .\newsapp\forms.py:22
+msgid "Title must start with an uppercase letter"
+msgstr "Заголовок должен начинаться с заглавной буквы"
+
+#: .\newsapp\forms.py:28
+msgid "Text must be at least 20 characters long"
+msgstr "Текст должен быть не менее 20 символов"
+
+#: .\newsapp\forms.py:30
+msgid "Text must start with an uppercase letter"
+msgstr "Текст должен начинаться с заглавной буквы"
+
+#: .\newsapp\forms.py:39
+msgid "Title and text cannot be the same"
+msgstr "Заголовок и текст не могут быть одинаковыми"
+
+#: .\newsapp\models.py:37
+msgid "Article"
+msgstr "Статья"
+
+#: .\newsapp\models.py:38
+msgid "News"
+msgstr "Новости"
+
+#: .\newsapp\models.py:41
+msgid "Post type"
+msgstr "Тип публикации"
+
+#: .\newsapp\models.py:42 .\newsapp\models.py:85
+msgid "Created at"
+msgstr "Создано"
+
+#: .\newsapp\models.py:44
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\newsapp\models.py:45 .\newsapp\models.py:84
+msgid "Text"
+msgstr "Текст"
+
+#: .\newsapp\signals.py:22
+#, python-brace-format
+msgid "New article in category {category}"
+msgstr "Новая статья в категории {category}"
+
+#: .\newsapp\signals.py:24
+#, python-brace-format
+msgid ""
+"New article in category {category}\n"
+"Title: {title}\n"
+"Text: {text}\n"
+"Link to the article: http://127.0.0.1:8000{url}"
+msgstr ""
+"Новая статья в категории {category}\n"
+"Заголовок: {title}\n"
+"Текст: {text}\n"
+"Ссылка на статью: http://127.0.0.1:8000{url}"
+
+#: .\newsapp\signals.py:35
+#, python-brace-format
+msgid ""
+"New article in category {category}<br>Title: {title}<br>Text: {text}<br><a "
+"href=\"http://127.0.0.1:8000{url}\">Link to the article</a>"
+msgstr ""
+"Новая статья в категории {category}<br>Заголовок: {title}<br>Текст: {text}<br><a "
+"href=\"http://127.0.0.1:8000{url}\">Ссылка на статью</a>"
+
+#: .\newsapp\tasks.py:16
+msgid "Weekly News Digest"
+msgstr "Еженедельный дайджест новостей"
+
+#: .\newsapp\tasks.py:17
+msgid "Subscribe to our news feed"
+msgstr "Подпишитесь на нашу новостную ленту"
+
 #: .\newsapp\templates\403.html:6
 msgid "Ошибка 403"
-msgstr ""
+msgstr "Ошибка 403"
 
 #: .\newsapp\templates\403.html:9
 msgid "Кажется, у Вас нет доступа к данной странице..."
-msgstr ""
+msgstr "Кажется, у Вас нет доступа к данной странице..."
 
 #: .\newsapp\templates\403.html:11
 msgid "Вы можете запросить у администратора сайта доступ к данной странице"
-msgstr ""
+msgstr "Вы можете запросить у администратора сайта доступ к данной странице"
 
 #: .\newsapp\templates\account\email\email_confirmation_message.txt:5
 #, python-format
@@ -49,6 +144,12 @@ msgid ""
 "\n"
 "Хорошего дня!\n"
 msgstr ""
+"Вы получили это сообщение, потому что пользователь %(user_display)s указал "
+"этот email при регистрации на сайте %(site_domain)s.\n"
+"\n"
+"Для подтверждения регистрации пройдите по ссылке %(activate_url)s\n"
+"\n"
+"Хорошего дня!\n"
 
 #: .\newsapp\templates\default.html:8
 msgid "Мой сайт"
@@ -65,9 +166,9 @@ msgstr "Новости"
 
 #: .\newsapp\templates\default.html:33
 msgid "Change language"
-msgstr "Изменить язык"
+msgstr "Сменить язык"
 
-#: .\newsapp\templates\default.html:44
+#: .\newsapp\templates\default.html:47
 msgid "Мой сайт &copy; 2024"
 msgstr "Мой сайт &copy; 2024"
 
@@ -82,12 +183,16 @@ msgstr "Создание статьи"
 msgid "Сохранить"
 msgstr "Сохранить"
 
+#: .\newsapp\templates\newsapp\articles_delete.html:4
+msgid "Удаление статьи"
+msgstr "Удаление статьи"
+
 #: .\newsapp\templates\newsapp\articles_delete.html:10
 msgid "Вы действительно хотите удалить статью?"
-msgstr "Вы действительно хотите удалить статью?"
+msgstr "Вы действительно хотите удалить статью?"
 
 #: .\newsapp\templates\newsapp\articles_delete.html:11
-#: .\newsapp\templates\newsapp\news_list.html:37
+#: .\newsapp\templates\newsapp\news_list.html:38
 msgid "Удалить"
 msgstr "Удалить"
 
@@ -115,7 +220,7 @@ msgstr "Удаление новости"
 
 #: .\newsapp\templates\newsapp\news_delete.html:11
 msgid "Вы действительно хотите удалить новость"
-msgstr "Вы действительно хотите удалить новость"
+msgstr "Вы действительно хотите удалить новость"
 
 #: .\newsapp\templates\newsapp\news_delete.html:12
 msgid "удалить"
@@ -125,53 +230,41 @@ msgstr "удалить"
 msgid "Редактирование новости"
 msgstr "Редактирование новости"
 
-#: .\newsapp\templates\newsapp\news_list.html:12
+#: .\newsapp\templates\newsapp\news_list.html:13
 #: .\newsapp\templates\newsapp\news_search.html:9
 msgid "Найти"
 msgstr "Найти"
 
-#: .\newsapp\templates\newsapp\news_list.html:19
-msgid "Заголовок"
-msgstr "Заголовок"
-
-#: .\newsapp\templates\newsapp\news_list.html:20
-msgid "Дата публикации"
-msgstr "Дата публикации"
-
-#: .\newsapp\templates\newsapp\news_list.html:21
+#: .\newsapp\templates\newsapp\news_list.html:22
 msgid "Текст"
 msgstr "Текст"
 
-#: .\newsapp\templates\newsapp\news_list.html:22
-msgid "Категория"
-msgstr "Категория"
-
-#: .\newsapp\templates\newsapp\news_list.html:23
+#: .\newsapp\templates\newsapp\news_list.html:24
 msgid "Действия"
 msgstr "Действия"
 
-#: .\newsapp\templates\newsapp\news_list.html:32
+#: .\newsapp\templates\newsapp\news_list.html:33
 msgid "Подробнее"
 msgstr "Подробнее"
 
-#: .\newsapp\templates\newsapp\news_list.html:34
+#: .\newsapp\templates\newsapp\news_list.html:35
 msgid "Редактировать"
 msgstr "Редактировать"
 
-#: .\newsapp\templates\newsapp\news_list.html:40
+#: .\newsapp\templates\newsapp\news_list.html:41
 msgid "Добавить"
 msgstr "Добавить"
 
-#: .\newsapp\templates\newsapp\news_list.html:49
-#: .\newsapp\templates\newsapp\news_list.html:66
+#: .\newsapp\templates\newsapp\news_list.html:50
+#: .\newsapp\templates\newsapp\news_list.html:67
 msgid "Первая страница"
 msgstr "Первая страница"
 
-#: .\newsapp\templates\newsapp\news_list.html:70
+#: .\newsapp\templates\newsapp\news_list.html:71
 msgid "Последняя страница"
 msgstr "Последняя страница"
 
-#: .\newsapp\templates\newsapp\news_list.html:75
+#: .\newsapp\templates\newsapp\news_list.html:76
 msgid "Новостей нет!"
 msgstr "Новостей нет!"
 
@@ -200,10 +293,10 @@ msgstr "Подписки"
 msgid "Отписаться"
 msgstr "Отписаться"
 
-#: .\newsapp\views.py:68 .\newsapp\views.py:81
+#: .\newsapp\views.py:66 .\newsapp\views.py:79
 msgid "AR"
-msgstr "Статья"
+msgstr "АР"
 
-#: .\newsapp\views.py:68 .\newsapp\views.py:81
+#: .\newsapp\views.py:66 .\newsapp\views.py:79
 msgid "NW"
-msgstr "Новость"
+msgstr "СЗ"

@@ -3,7 +3,7 @@ from .models import Post
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.utils.translation import gettext as _
 
 @receiver(post_save, sender=Post)
 def product_created(instance, created, **kwargs):
@@ -19,18 +19,28 @@ def product_created(instance, created, **kwargs):
     if first_category:
         subscribers = User.objects.filter(categories__in=[first_category])
         emails = subscribers.values_list('email', flat=True)
-        subject = f'Новая статья в категории {first_category.name}'
+        subject = _('New article in category {category}').format(category=first_category.name)
         text_content = (
-            f'Новая статья в категории {first_category.name}\n'
-            f'Название: {instance.title}\n'
-            f'Текст: {instance.text}\n'
-            f'Ссылка на статью: http://127.0.0.1:8000{instance.get_absolute_url()}'
+            _('New article in category {category}\n'
+              'Title: {title}\n'
+              'Text: {text}\n'
+              'Link to the article: http://127.0.0.1:8000{url}').format(
+                category=first_category.name,
+                title=instance.title,
+                text=instance.text,
+                url=instance.get_absolute_url()
+            )
         )
         html_content = (
-            f'Новая статья в категории {first_category.name}<br>'
-            f'Название: {instance.title}<br>'
-            f'Текст: {instance.text}<br>'
-            f'<a href="http://127.0.0.1:8000{instance.get_absolute_url()}">Ссылка на статью</a>'
+            _('New article in category {category}<br>'
+              'Title: {title}<br>'
+              'Text: {text}<br>'
+              '<a href="http://127.0.0.1:8000{url}">Link to the article</a>').format(
+                category=first_category.name,
+                title=instance.title,
+                text=instance.text,
+                url=instance.get_absolute_url()
+            )
         )
 
         for email in emails:

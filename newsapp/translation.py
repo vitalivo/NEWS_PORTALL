@@ -1,4 +1,4 @@
-from .models import Post, Category, Comment, Subscriber, Author
+from .models import Post, Category, Comment, Subscriber, Author, PostCategory
 from modeltranslation.translator import register, TranslationOptions
 
 
@@ -11,7 +11,7 @@ class PostTranslationOptions(TranslationOptions):
         'created_at',
         'rating',
         'category_type',
-        )
+    )
     
     
 @register(Category)
@@ -29,5 +29,11 @@ class SubscriberTranslationOptions(TranslationOptions):
     fields = ('user', 'category',)  
     
     
+@register(Author)
 class AuthorTranslationOptions(TranslationOptions):
-    fields = ('rating',)      
+    fields = ('rating',)
+    
+    
+@register(PostCategory)
+class PostCategoryTranslationOptions(TranslationOptions):
+    fields = ('post', 'category')    

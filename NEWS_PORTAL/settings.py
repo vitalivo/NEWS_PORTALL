@@ -67,6 +67,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.cache.FetchFromCacheMiddleware",
+    
+    'newsapp.middlewares.TimezoneMiddleware',
 ]
 
 

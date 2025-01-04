@@ -1,3 +1,5 @@
+import pytz
+
 from django.contrib.auth.models import User
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
@@ -16,6 +18,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.translation import gettext as _
 from django.core.cache import cache
+from django.utils import timezone
+from django.shortcuts import redirect
 
 
 def search(request):
@@ -28,7 +32,7 @@ class NewsList(ListView):
     ordering = '-created_at'
     template_name = 'newsapp/news_list.html'
     context_object_name = 'news'
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -38,7 +42,13 @@ class NewsList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
         return context
+    
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect(request.path)
     
 
 class NewsDetail(DetailView):
@@ -46,6 +56,11 @@ class NewsDetail(DetailView):
     template_name = 'newsapp/news_detail.html'
     context_object_name = 'news'
     pk_url_kwarg = 'pk'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['timezones'] = pytz.common_timezones  # Добавляем все доступные часовые пояса
+        return context
 
     def get_object(self, queryset=None):
         obj = cache.get(f'news-{self.kwargs["pk"]}', None)

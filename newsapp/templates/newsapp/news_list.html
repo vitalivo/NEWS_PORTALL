@@ -24,9 +24,9 @@
             </tr>
             {% for news in page_obj %}
                 <tr>
-                    <td>{{ news.title_en|censor|slice:":20" }}</td>
+                    <td>{{ news.title|censor|slice:":20" }}</td>
                     <td>{{ news.created_at|date:"d.m.Y" }}</td>
-                    <td>{{ news.text_en|censor|slice:":20" }}</td>
+                    <td>{{ news.text|censor|slice:":20" }}</td>
                     <td>{{ news.get_category_type_display }}</td>
                     <td>
                         <a href="{% url 'news_detail' news.pk %}">{% trans "Подробнее" %}</a>

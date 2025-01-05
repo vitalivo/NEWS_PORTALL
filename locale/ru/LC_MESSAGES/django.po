@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-03 17:14+0200\n"
+"POT-Creation-Date: 2025-01-05 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,11 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\NEWS_PORTAL\settings.py:135
+
+#: .\NEWS_PORTAL\settings.py:137
 msgid "English"
 msgstr "Английский"
 
-#: .\NEWS_PORTAL\settings.py:136
+#: .\NEWS_PORTAL\settings.py:138
 msgid "Russian"
 msgstr "Русский"
 
@@ -67,7 +68,7 @@ msgstr "Заголовок и текст не могут быть одинако
 msgid "Article"
 msgstr "Статья"
 
-#: .\newsapp\models.py:38
+#: .\newsapp\models.py:38 .\newsapp\templates\default.html:28
 msgid "News"
 msgstr "Новости"
 
@@ -111,8 +112,8 @@ msgid ""
 "New article in category {category}<br>Title: {title}<br>Text: {text}<br><a "
 "href=\"http://127.0.0.1:8000{url}\">Link to the article</a>"
 msgstr ""
-"Новая статья в категории {category}<br>Заголовок: {title}<br>Текст: {text}<br><a "
-"href=\"http://127.0.0.1:8000{url}\">Ссылка на статью</a>"
+"Новая статья в категории {category}<br>Заголовок: {title}<br>Текст: {text}"
+"<br><a href=\"http://127.0.0.1:8000{url}\">Ссылка на статью</a>"
 
 #: .\newsapp\tasks.py:16
 msgid "Weekly News Digest"
@@ -151,26 +152,29 @@ msgstr ""
 "\n"
 "Хорошего дня!\n"
 
-#: .\newsapp\templates\default.html:8
-msgid "Мой сайт"
+#: .\newsapp\templates\default.html:9
+msgid "My Site"
 msgstr "Мой сайт"
 
-#: .\newsapp\templates\default.html:14
-msgid "Добро пожаловать на мой сайт"
+#: .\newsapp\templates\default.html:25
+msgid "Welcome to my site"
 msgstr "Добро пожаловать на мой сайт"
 
-#: .\newsapp\templates\default.html:17
-#: .\newsapp\templates\newsapp\category.html:4
-msgid "Новости"
-msgstr "Новости"
-
-#: .\newsapp\templates\default.html:33
+#: .\newsapp\templates\default.html:43
 msgid "Change language"
 msgstr "Сменить язык"
 
-#: .\newsapp\templates\default.html:47
-msgid "Мой сайт &copy; 2024"
-msgstr "Мой сайт &copy; 2024"
+#: .\newsapp\templates\default.html:48
+msgid "Time zone:"
+msgstr "Часовой пояс"
+
+#: .\newsapp\templates\default.html:54
+msgid "Set"
+msgstr "Сохранить"
+
+#: .\newsapp\templates\default.html:69
+msgid "My Site &copy; 2024"
+msgstr "«Мой сайт &copy; 2024"
 
 #: .\newsapp\templates\newsapp\articles_create.html:6
 msgid "Создание статьи"
@@ -199,6 +203,10 @@ msgstr "Удалить"
 #: .\newsapp\templates\newsapp\articles_edit.html:5
 msgid "Редактирование статьи"
 msgstr "Редактирование статьи"
+
+#: .\newsapp\templates\newsapp\category.html:4
+msgid "Новости"
+msgstr "Новости"
 
 #: .\newsapp\templates\newsapp\category.html:10
 msgid "Подписаться на"
@@ -293,10 +301,19 @@ msgstr "Подписки"
 msgid "Отписаться"
 msgstr "Отписаться"
 
-#: .\newsapp\views.py:66 .\newsapp\views.py:79
+#: .\newsapp\views.py:81 .\newsapp\views.py:94
 msgid "AR"
 msgstr "АР"
 
-#: .\newsapp\views.py:66 .\newsapp\views.py:79
+#: .\newsapp\views.py:81 .\newsapp\views.py:94
 msgid "NW"
 msgstr "СЗ"
+
+#~ msgid "Мой сайт"
+#~ msgstr "Мой сайт"
+
+#~ msgid "Добро пожаловать на мой сайт"
+#~ msgstr "Добро пожаловать на мой сайт"
+
+#~ msgid "Мой сайт &copy; 2024"
+#~ msgstr "Мой сайт &copy; 2024"

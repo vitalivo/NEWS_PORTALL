@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-03 13:54+0200\n"
+"POT-Creation-Date: 2025-01-05 15:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\NEWS_PORTAL\settings.py:141
+
+#: .\NEWS_PORTAL\settings.py:137
 msgid "English"
 msgstr "English"
 
-#: .\NEWS_PORTAL\settings.py:142
+#: .\NEWS_PORTAL\settings.py:138
 msgid "Russian"
 msgstr "Russian"
 
-#: .\newsapp\filters.py:9 .\newsapp\templates\newsapp\news_list.html:19
+#: .\newsapp\filters.py:9 .\newsapp\templates\newsapp\news_list.html:20
 msgid "Заголовок"
 msgstr "Title"
 
-#: .\newsapp\filters.py:13 .\newsapp\templates\newsapp\news_list.html:22
+#: .\newsapp\filters.py:13 .\newsapp\templates\newsapp\news_list.html:23
 msgid "Категория"
 msgstr "Category"
 
@@ -37,35 +38,35 @@ msgstr "Category"
 msgid "Все категории"
 msgstr "All categories"
 
-#: .\newsapp\filters.py:19 .\newsapp\templates\newsapp\news_list.html:20
+#: .\newsapp\filters.py:19 .\newsapp\templates\newsapp\news_list.html:21
 msgid "Дата публикации"
 msgstr "Publication date"
 
 #: .\newsapp\forms.py:20
-msgid "Заголовок не должен быть меньше 10 символов"
-msgstr "The title must be at least 10 characters long"
+msgid "Title must be at least 10 characters long"
+msgstr ""
 
 #: .\newsapp\forms.py:22
-msgid "Заголовок должен начинаться с заглавной буквы"
-msgstr "The title must start with a capital letter"
+msgid "Title must start with an uppercase letter"
+msgstr ""
 
 #: .\newsapp\forms.py:28
-msgid "Текст не должен быть меньше 20 символов"
-msgstr "The text must be at least 20 characters long"
+msgid "Text must be at least 20 characters long"
+msgstr ""
 
 #: .\newsapp\forms.py:30
-msgid "Текст должен начинаться с заглавной буквы"
-msgstr "The text must start with a capital letter"
+msgid "Text must start with an uppercase letter"
+msgstr ""
 
 #: .\newsapp\forms.py:39
-msgid "Заголовок и текст не могут совпадать"
-msgstr "The title and text cannot be the same"
+msgid "Title and text cannot be the same"
+msgstr ""
 
 #: .\newsapp\models.py:37
 msgid "Article"
 msgstr "Article"
 
-#: .\newsapp\models.py:38
+#: .\newsapp\models.py:38 .\newsapp\templates\default.html:28
 msgid "News"
 msgstr "News"
 
@@ -149,26 +150,29 @@ msgstr ""
 "\n"
 "Have a nice day!\n"
 
-#: .\newsapp\templates\default.html:8
-msgid "Мой сайт"
-msgstr "My site"
+#: .\newsapp\templates\default.html:9
+msgid "My Site"
+msgstr ""
 
-#: .\newsapp\templates\default.html:14
-msgid "Добро пожаловать на мой сайт"
-msgstr "Welcome to my site"
+#: .\newsapp\templates\default.html:25
+msgid "Welcome to my site"
+msgstr ""
 
-#: .\newsapp\templates\default.html:17
-#: .\newsapp\templates\newsapp\category.html:4
-msgid "Новости"
-msgstr "News"
-
-#: .\newsapp\templates\default.html:33
+#: .\newsapp\templates\default.html:43
 msgid "Change language"
 msgstr "Change language"
 
-#: .\newsapp\templates\default.html:45
-msgid "Мой сайт &copy; 2024"
-msgstr "My site &copy; 2024"
+#: .\newsapp\templates\default.html:48
+msgid "Time zone:"
+msgstr ""
+
+#: .\newsapp\templates\default.html:54
+msgid "Set"
+msgstr ""
+
+#: .\newsapp\templates\default.html:69
+msgid "My Site &copy; 2024"
+msgstr ""
 
 #: .\newsapp\templates\newsapp\articles_create.html:6
 msgid "Создание статьи"
@@ -190,13 +194,17 @@ msgid "Вы действительно хотите удалить стать�
 msgstr "Do you really want to delete the article?"
 
 #: .\newsapp\templates\newsapp\articles_delete.html:11
-#: .\newsapp\templates\newsapp\news_list.html:37
+#: .\newsapp\templates\newsapp\news_list.html:38
 msgid "Удалить"
 msgstr "Delete"
 
 #: .\newsapp\templates\newsapp\articles_edit.html:5
 msgid "Редактирование статьи"
 msgstr "Editing an article"
+
+#: .\newsapp\templates\newsapp\category.html:4
+msgid "Новости"
+msgstr "News"
 
 #: .\newsapp\templates\newsapp\category.html:10
 msgid "Подписаться на"
@@ -228,41 +236,41 @@ msgstr "delete"
 msgid "Редактирование новости"
 msgstr "Editing news"
 
-#: .\newsapp\templates\newsapp\news_list.html:12
+#: .\newsapp\templates\newsapp\news_list.html:13
 #: .\newsapp\templates\newsapp\news_search.html:9
 msgid "Найти"
 msgstr "Find"
 
-#: .\newsapp\templates\newsapp\news_list.html:21
+#: .\newsapp\templates\newsapp\news_list.html:22
 msgid "Текст"
 msgstr "Text"
 
-#: .\newsapp\templates\newsapp\news_list.html:23
+#: .\newsapp\templates\newsapp\news_list.html:24
 msgid "Действия"
 msgstr "Actions"
 
-#: .\newsapp\templates\newsapp\news_list.html:32
+#: .\newsapp\templates\newsapp\news_list.html:33
 msgid "Подробнее"
 msgstr "Read more"
 
-#: .\newsapp\templates\newsapp\news_list.html:34
+#: .\newsapp\templates\newsapp\news_list.html:35
 msgid "Редактировать"
 msgstr "Edit"
 
-#: .\newsapp\templates\newsapp\news_list.html:40
+#: .\newsapp\templates\newsapp\news_list.html:41
 msgid "Добавить"
 msgstr "Add"
 
-#: .\newsapp\templates\newsapp\news_list.html:49
-#: .\newsapp\templates\newsapp\news_list.html:66
+#: .\newsapp\templates\newsapp\news_list.html:50
+#: .\newsapp\templates\newsapp\news_list.html:67
 msgid "Первая страница"
 msgstr "First page"
 
-#: .\newsapp\templates\newsapp\news_list.html:70
+#: .\newsapp\templates\newsapp\news_list.html:71
 msgid "Последняя страница"
 msgstr "Last page"
 
-#: .\newsapp\templates\newsapp\news_list.html:75
+#: .\newsapp\templates\newsapp\news_list.html:76
 msgid "Новостей нет!"
 msgstr "No news!"
 
@@ -291,10 +299,34 @@ msgstr "Subscriptions"
 msgid "Отписаться"
 msgstr "Unsubscribe"
 
-#: .\newsapp\views.py:66 .\newsapp\views.py:79
+#: .\newsapp\views.py:81 .\newsapp\views.py:94
 msgid "AR"
 msgstr "AR"
 
-#: .\newsapp\views.py:66 .\newsapp\views.py:79
+#: .\newsapp\views.py:81 .\newsapp\views.py:94
 msgid "NW"
 msgstr "NW"
+
+#~ msgid "Заголовок не должен быть меньше 10 символов"
+#~ msgstr "The title must be at least 10 characters long"
+
+#~ msgid "Заголовок должен начинаться с заглавной буквы"
+#~ msgstr "The title must start with a capital letter"
+
+#~ msgid "Текст не должен быть меньше 20 символов"
+#~ msgstr "The text must be at least 20 characters long"
+
+#~ msgid "Текст должен начинаться с заглавной буквы"
+#~ msgstr "The text must start with a capital letter"
+
+#~ msgid "Заголовок и текст не могут совпадать"
+#~ msgstr "The title and text cannot be the same"
+
+#~ msgid "Мой сайт"
+#~ msgstr "My site"
+
+#~ msgid "Добро пожаловать на мой сайт"
+#~ msgstr "Welcome to my site"
+
+#~ msgid "Мой сайт &copy; 2024"
+#~ msgstr "My site &copy; 2024"

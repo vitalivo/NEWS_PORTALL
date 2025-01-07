@@ -1,5 +1,6 @@
+import django_filters
 import pytz
-
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
@@ -19,7 +20,12 @@ from django.db.models.signals import post_save
 from django.utils.translation import gettext as _
 from django.core.cache import cache
 from django.utils import timezone
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from rest_framework import viewsets
+from rest_framework import permissions
+from newsapp.serializers import *
+from newsapp.models import *
+from rest_framework.response import Response
 
 
 def search(request):
@@ -162,3 +168,25 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
+
+
+class PostViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['title', 'text', 'created_at', 'rating', 'categories', 'author']      
+    
+class CategoryViewset(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    
+    
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer  
+    
+    
+class AuthorViewSet(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer        

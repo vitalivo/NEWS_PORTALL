@@ -1,6 +1,15 @@
 from .views import subscriptions
-from django.urls import path
+from django.urls import include, path
 from . import views
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'post', views.PostViewset)
+router.register(r'category', views.CategoryViewset)
+router.register(r'comment', views.CommentViewset)
+router.register(r'author', views.AuthorViewSet)
+
 
 urlpatterns = [
     path('news/', views.NewsList.as_view(), name='news_list'),
@@ -13,5 +22,7 @@ urlpatterns = [
     path('articles/<int:pk>/edit/', views.ArticlesUpdate.as_view(), name='article_edit'),
     path('articles/<int:pk>/delete/', views.ArticlesDelete.as_view(), name='article_delete'),
     path('subscriptions/', subscriptions, name='subscriptions'),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

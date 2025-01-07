@@ -44,6 +44,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Title'))
     text = models.TextField(verbose_name=_('Text'))
     rating = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

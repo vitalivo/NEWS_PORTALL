@@ -14,16 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path, include
+# from django.views.generic import RedirectView, TemplateView
+
+# urlpatterns = [
+#     path('i18n/', include('django.conf.urls.i18n')),
+#     path('admin/', admin.site.urls),
+#     path("accounts/", include("allauth.urls")),
+#     path('', include('newsapp.urls')),
+#     path('', RedirectView.as_view(url='/news/', permanent=True)),
+#     path('swagger-ui/', TemplateView.as_view(
+#        template_name='swagger-ui.html',
+#        extra_context={'schema_url':'openapi-schema'}
+#    ), name='swagger-ui'),
+# ]
+
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
-    path('', include('newsapp.urls')),
-    path('', RedirectView.as_view(url='/news/', permanent=True)),
+    path('swagger-ui/', TemplateView.as_view(
+       template_name='swagger-ui.html',
+       extra_context={'schema_url': 'openapi-schema'}
+   ), name='swagger-ui'),
+    path('', RedirectView.as_view(url='/news/', permanent=True)),  # Переместите этот путь вниз
+    path('', include('newsapp.urls')),  # Убедитесь, что у вас есть маршрут для /news/
 ]
-
-
